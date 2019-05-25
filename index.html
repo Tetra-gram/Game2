@@ -1,43 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Game</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <script src="script.js"></script>
-    <div id="container">  
-<div id="col1">
-<form>
-  <input type="text" id="bronze" readonly="readonly" value="0"/> 
-  <small>Bronze</small>
-  <input type="button" onclick="BronzeIncrement()" value="Mine" />
-  <input style="visibility: hidden;" type="button" id="bigMine" onclick="BigMine()" value="Big Mine" />
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Game</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<script src="newscript.js">
+
+	</script>
+	<div id="container">
+		<div id="col1">
+
+      <!-- Bronze -->
+			<input type="text" id="bronze" readonly="readonly" value="0"/> 
+      <small>Bronze</small>
+      <input type="button" onclick="BronzeMine()" value="Mine" />
+      <input style="visibility: hidden;" type="button" id="bigMineBronze" onclick="BigMineBronze()" value="Big Mine" />
   
-  <br>
+      <br>
 
-  <input style="visibility: hidden;" type="button" id="AutoMineBronze" onclick="BuyAutoMineBronze()"value="Bronze Auto Miner" />
-  <input style="visibility: hidden;" type="text" id="AutoMinerCount" readonly="readonly" value="0"/>
+      <input style="visibility: hidden;" type="button" id="autoMineBronze" onclick="BuyAutoMineBronze()"value="Bronze Auto Miner" />
+      <input style="visibility: hidden;" type="text" id="autoMinerCountBronze" readonly="readonly" value="0"/>
 
-  <br>
+      <!-- Silver -->
+      <br>
   
-  <input style="visibility: hidden;" type="text" id="silver" readonly="readonly" value="0"/> 
-  <small style="visibility: hidden;" id="silvertext">Silver</small>
-  <input style="visibility: hidden;" type="button" id="MineSilver" onclick="SilverIncrement()"value="Mine" />
-  <input style="visibility: hidden;" type="button" id="bigMineSilver" onclick="BigMineSilver()"value="Big Mine" />
-  <br>
+       <input style="visibility: hidden;" type="text" id="silver" readonly="readonly" value="0"/> 
+      <small style="visibility: hidden;" id="silvertext">Silver</small>
+      <input style="visibility: hidden;" type="button" id="mineSilver" onclick="SilverMine()"value="Mine" />
+       <input style="visibility: hidden;" type="button" id="bigMineSilver" onclick="BigMineSilver()"value="Big Mine" />
+      <br>
 
-<input style="visibility: hidden;" type="button" id="AutoMineSilver" onclick="BuyAutoMineSilver()"value="Silver Auto Miner" />
-  <input style="visibility: hidden;" type="text" id="AutoMinerCountSilver" readonly="readonly" value="0"/>
+      <input style="visibility: hidden;" type="button" id="autoMineSilver" onclick="BuyAutoMineSilver()"value="Silver Auto Miner" />
+      <input style="visibility: hidden;" type="text" id="autoMinerCountSilver" readonly="readonly" value="0"/>
 
+      <!-- Gold -->
+      <br>
   
+       <input style="visibility: hidden;" type="text" id="gold" readonly="readonly" value="0"/> 
+      <small style="visibility: hidden;" id="goldtext">Gold</small>
+      <input style="visibility: hidden;" type="button" id="mineGold" onclick="GoldMine()"value="Mine" />
+       <input style="visibility: hidden;" type="button" id="bigMineGold" onclick="BigMineGold()"value="Big Mine" />
+      <br>
 
-  <br>
+      <input style="visibility: hidden;" type="button" id="autoMineGold" onclick="BuyAutoMineGold()"value="Gold Auto Miner" />
+      <input style="visibility: hidden;" type="text" id="autoMinerCountGold" readonly="readonly" value="0"/>
 
-
-</form>
 </div>
 
 <div id="col2outer">
