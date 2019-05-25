@@ -12,12 +12,14 @@ function UpgradeCheck(){
   if (Bronze >= 10 && BronzeUnlock1 == false){
     document.getElementById('bigMineBronze').style.visibility = "visible"
     BronzeUnlock1 = true;
+    document.getElementById('output').value = "Unlocked Bronze Big Mine!"
   }
   
   if (Bronze >= 1000 && BronzeAutoUnlock == false){
     document.getElementById('autoMineBronze').style.visibility = "visible"
     document.getElementById('autoMinerCountBronze').style.visibility = "visible"
     BronzeAutoUnlock = true;
+    document.getElementById('output').value = "Unlocked Bronze Auto Mine!"
   }
 
   if (Bronze >= 10000 && SilverUnlock == false){
@@ -25,18 +27,21 @@ function UpgradeCheck(){
     document.getElementById('silvertext').style.visibility = "visible"
     document.getElementById('mineSilver').style.visibility = "visible"
     SilverUnlock = true;
+    document.getElementById('output').value = "Unlocked Silver"
   }
 
   var Silver = document.getElementById('silver').value
   if (Silver >= 10 && SilverUnlock1 == false){
     document.getElementById('bigMineSilver').style.visibility = "visible"
     SilverUnlock1 = true;
+    document.getElementById('output').value = "Unlocked Silver Big Mine!"
   }
 
   if (Silver >= 1000 && SilverAutoUnlock == false){
     document.getElementById('autoMineSilver').style.visibility = "visible"
     document.getElementById('autoMinerCountSilver').style.visibility = "visible"
     SilverAutoUnlock = true;
+    document.getElementById('output').value = "Unlocked Silver Auto Mine!"
   }
 
   if (Silver >= 1000000 && GoldUnlock == false){
@@ -44,18 +49,21 @@ function UpgradeCheck(){
     document.getElementById('goldtext').style.visibility = "visible"
     document.getElementById('mineGold').style.visibility = "visible"
     GoldUnlock = true;
+    document.getElementById('output').value = "Unlocked Gold!"
   }
 
   var Gold = document.getElementById('gold').value
   if (Gold >= 10 && GoldUnlock1 == false){
     document.getElementById('bigMineGold').style.visibility = "visible"
     GoldUnlock1 = true;
+    document.getElementById('output').value = "Unlocked Gold Big Mine!"
   }
 
   if (Gold >= 1000 && GoldAutoUnlock == false){
     document.getElementById('autoMineGold').style.visibility = "visible"
     document.getElementById('autoMinerCountGold').style.visibility = "visible"
     GoldAutoUnlock = true;
+    document.getElementById('output').value = "Unlocked Gold Auto Mine!"
   }
   
 
