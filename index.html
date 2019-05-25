@@ -13,7 +13,18 @@
 
 	</script>
 	<div id="container">
-		<div id="col1">
+    <div id="col1">
+      
+      <style>
+        small.alignsilver
+        {
+          margin-right: 6px
+        }
+        small.aligngold
+        {
+          margin-right: 10px
+        }
+      </style>
 
       <!-- Bronze -->
 			<input type="text" id="bronze" readonly="readonly" value="0"/> 
@@ -29,10 +40,10 @@
       <!-- Silver -->
       <br>
   
-       <input style="visibility: hidden;" type="text" id="silver" readonly="readonly" value="0"/> 
-      <small style="visibility: hidden;" id="silvertext">Silver</small>
+      <input style="visibility: hidden;" type="text" id="silver" readonly="readonly" value="0"/> 
+      <small class="alignsilver" style="visibility: hidden;" id="silvertext">Silver</small>
       <input style="visibility: hidden;" type="button" id="mineSilver" onclick="SilverMine()"value="Mine" />
-       <input style="visibility: hidden;" type="button" id="bigMineSilver" onclick="BigMineSilver()"value="Big Mine" />
+      <input style="visibility: hidden;" type="button" id="bigMineSilver" onclick="BigMineSilver()"value="Big Mine" />
       <br>
 
       <input style="visibility: hidden;" type="button" id="autoMineSilver" onclick="BuyAutoMineSilver()"value="Silver Auto Miner" />
@@ -40,11 +51,11 @@
 
       <!-- Gold -->
       <br>
-  
-       <input style="visibility: hidden;" type="text" id="gold" readonly="readonly" value="0"/> 
-      <small style="visibility: hidden;" id="goldtext">Gold</small>
+
+      <input style="visibility: hidden;" type="text" id="gold" readonly="readonly" value="0"/> 
+      <small class="aligngold" style="visibility: hidden;" id="goldtext">Gold</small>
       <input style="visibility: hidden;" type="button" id="mineGold" onclick="GoldMine()"value="Mine" />
-       <input style="visibility: hidden;" type="button" id="bigMineGold" onclick="BigMineGold()"value="Big Mine" />
+      <input style="visibility: hidden;" type="button" id="bigMineGold" onclick="BigMineGold()"value="Big Mine" />
       <br>
 
       <input style="visibility: hidden;" type="button" id="autoMineGold" onclick="BuyAutoMineGold()"value="Gold Auto Miner" />
@@ -63,6 +74,7 @@
   <h3>Conversion Rate</h3>
   <ul>
     <li>1000 Bronze = 1 Silver</li>
+    <li>1000 Silver = 1 Gold</li>
   </ul>
   </div>
 </div>
