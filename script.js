@@ -1,150 +1,185 @@
-var started = false;
-function ConstantConvert(){
-  if (started == false){
-    //var Silver = document.getElementById('silver').value
-  // if(Silver >= 1000){
-  //   Silver = Silver - 1000;
-  //}
-    setInterval(function() { 
-     var Bronze = document.getElementById('bronze').value
-      if(Bronze >= 1000){
-       Bronze = Bronze - 1000;
-       document.getElementById('bronze').value = Bronze;
-       var Silver = document.getElementById('silver').value
-       Silver++;
-       document.getElementById('silver').value = Silver;
-      }
-    }, 100);
-    started = true;
-    return started;
+var BronzeUnlock1 = false;
+var BronzeAutoUnlock = false;
+var SilverUnlock = false;
+var SilverUnlock1 = false;
+var SilverAutoUnlock = false;
+var GoldUnlock = false;
+var GoldUnlock1 = false;
+var GoldAutoUnlock = false;
+
+function UpgradeCheck(){
+  var Bronze = document.getElementById('bronze').value
+  if (Bronze >= 10 && BronzeUnlock1 == false){
+    document.getElementById('bigMineBronze').style.visibility = "visible"
+    BronzeUnlock1 = true;
   }
+  
+  if (Bronze >= 1000 && BronzeAutoUnlock == false){
+    document.getElementById('autoMineBronze').style.visibility = "visible"
+    document.getElementById('autoMinerCountBronze').style.visibility = "visible"
+    BronzeAutoUnlock = true;
+  }
+
+  if (Bronze >= 10000 && SilverUnlock == false){
+    document.getElementById('silver').style.visibility = "visible"
+    document.getElementById('silvertext').style.visibility = "visible"
+    document.getElementById('mineSilver').style.visibility = "visible"
+    SilverUnlock = true;
+  }
+
+  var Silver = document.getElementById('silver').value
+  if (Silver >= 10 && SilverUnlock1 == false){
+    document.getElementById('bigMineSilver').style.visibility = "visible"
+    SilverUnlock1 = true;
+  }
+
+  if (Silver >= 1000 && SilverAutoUnlock == false){
+    document.getElementById('autoMineSilver').style.visibility = "visible"
+    document.getElementById('autoMinerCountSilver').style.visibility = "visible"
+    SilverAutoUnlock = true;
+  }
+
+  if (Silver >= 1000000 && GoldUnlock == false){
+    document.getElementById('gold').style.visibility = "visible"
+    document.getElementById('goldtext').style.visibility = "visible"
+    document.getElementById('mineGold').style.visibility = "visible"
+    GoldUnlock = true;
+  }
+
+  var Gold = document.getElementById('gold').value
+  if (Gold >= 10 && GoldUnlock1 == false){
+    document.getElementById('bigMineGold').style.visibility = "visible"
+    GoldUnlock1 = true;
+  }
+
+  if (Gold >= 1000 && GoldAutoUnlock == false){
+    document.getElementById('autoMineGold').style.visibility = "visible"
+    document.getElementById('autoMinerCountGold').style.visibility = "visible"
+    GoldAutoUnlock = true;
+  }
+  
+
+  return BronzeUnlock1, BronzeAutoUnlock, SilverUnlock, SilverUnlock1, SilverAutoUnlock, GoldUnlock, GoldUnlock1, GoldAutoUnlock
+}
+
+
+function BronzeMine(){
+  var Bronze = document.getElementById('bronze').value
+  Bronze++;
+  document.getElementById('bronze').value = Bronze;
+  UpgradeCheck();
+}
+
+function BigMineBronze(){
+  var Bronze = document.getElementById('bronze').value;
+  var Random = Math.random() * (2 - 1) + 1;
+  Bronze = Math.round(Bronze * Random);
+  document.getElementById('bronze').value = Bronze
+
+  UpgradeCheck();
 }
 
 function BuyAutoMineBronze(){
-  if(document.getElementById('silver').value >= 100){
-    cost = 100
-    total = document.getElementById('silver').value - cost
-    document.getElementById('silver').value = total
-    AutoMineBronze()
-    minerCount = document.getElementById('AutoMinerCount').value
-    minerCount++;
-    document.getElementById('AutoMinerCount').value = minerCount
+  var Bronze = document.getElementById('bronze').value;
+  if (Bronze >= 1000){
+    AddBronzeMiner();
+    var MinerCount = document.getElementById('autoMinerCountBronze').value;
+    MinerCount++;
+    document.getElementById('autoMinerCountBronze').value = MinerCount;
+    Bronze = Bronze - 1000;
+    document.getElementById('bronze').value = Bronze;
   }
-  else
-  {
-    document.getElementById('output').value = "Not enough money";
-  }
-}
-function AutoMineBronze(toggled){
-  setInterval(function() { 
-    var value = parseInt(document.getElementById('bronze').value, 10);
-    value++;
-    document.getElementById('bronze').value = value;
-   }, 1000);
+
+  UpgradeCheck();
 }
 
-var SilverUnlocked = false;
-function CheckBalance()
-{
-  var value = parseInt(document.getElementById('bronze').value, 10);
-  if (value > 1000 && SilverUnlocked == false)
-  {
-    document.getElementById('silver').style.visibility = "visible";
-    document.getElementById('silvertext').style.visibility = "visible";
-    document.getElementById('MineSilver').style.visibility = "visible";
-    document.getElementById('output').value = "Silver Unlocked";
-    SilverUnlocked = true;
-  }
-  if (value >= 1000)
-  {
-    var fullnum = Math.round(value/1000)
-    var trailnum = value%1000
-    document.getElementById('bronze').value = trailnum;
-    SilverIncrement()
-  }
-}
-function BronzeIncrement()
-{
-  var value = parseInt(document.getElementById('bronze').value, 10);
-  if (document.getElementById('bigMine').style.visibility == "hidden")
-  {
-    if (value == 9)
-    {
-      value = 0
-      document.getElementById('bigMine').style.visibility = "visible";
-      document.getElementById('output').value = "Big Mine Unlocked";
-      
-    }
-  }
-  if (document.getElementById('silver').style.visibility == "hidden")
-  {
-    if (document.getElementById('bronze').value == 1000)
-    {
-      value = 0
-      document.getElementById('MineSilver').style.visibility = "visible";
-      SilverUnlocked = true
-    }
-  }
-  value++;
-  document.getElementById('bronze').value = value;
-  CheckBalance();
-  ConstantConvert();
+function AddBronzeMiner(){
+  setInterval(function () {
+    var Bronze = parseInt(document.getElementById('bronze').value, 10);
+    Bronze++;
+    document.getElementById('bronze').value = Bronze;
+  }, 1000);
 }
 
-function BigMine()
-{
-  if (document.getElementById('bronze').value > 3000)
-  {
-    document.getElementById('bigMine').value = "Broken :(";
-  }
-  else
-  {
-    var value = document.getElementById('bronze').value;
-    var cost = value * 0.5
-    document.getElementById('bronze').value = value - cost;
-    var clicks;
-    var stopClicks = 10;
-    for (clicks = 0; clicks < stopClicks; clicks++)
-    {
-      document.getElementById('bronze').value = Math.round(value * 2)
-    }
-  }
-  CheckBalance();
+
+
+
+function SilverMine(){
+  var Silver = document.getElementById('silver').value
+  Silver++;
+  document.getElementById('silver').value = Silver;
+  UpgradeCheck();
 }
-function SilverIncrement()
-{
-  var value = parseInt(document.getElementById('silver').value, 10);
-  if (document.getElementById('bigMineSilver').style.visibility == "hidden")
-  {
-    if (value == 9)
-    {
-      value = 0
-      document.getElementById('bigMineSilver').style.visibility = "visible";
-      document.getElementById('output').value = "Big Mine Unlocked";
-    }
-  }
-  value++;
-  document.getElementById('silver').value = value;
-  CheckBalance();
+
+function BigMineSilver(){
+  var Silver = document.getElementById('silver').value;
+  var Random = Math.random() * (2 - 1) + 1;
+  Silver = Math.round(Silver * Random);
+  document.getElementById('silver').value = Silver
+
+  UpgradeCheck();
 }
-function BigMineSilver()
-{
-  if (document.getElementById('silver').value > 850)
-  {
-    document.getElementById('AutoMineBronze').style.visibility = "visible";
-    document.getElementById('AutoMinerCount').style.visibility = "visible";
+
+function BuyAutoMineSilver(){
+  var Silver = document.getElementById('silver').value;
+  if (Silver >= 10000){
+    AddSilverMiner();
+    var MinerCount = document.getElementById('autoMinerCountSilver').value;
+    MinerCount++;
+    document.getElementById('autoMinerCountSilver').value = MinerCount;
+    Silver = Silver - 10000;
+    document.getElementById('silver').value = Silver;
   }
-  else
-  {
-    var value = document.getElementById('silver').value;
-    var cost = value * 0.5
-    document.getElementById('silver').value = value - cost;
-    var clicks;
-    var stopClicks = 10;
-    for (clicks = 0; clicks < stopClicks; clicks++)
-    {
-      document.getElementById('silver').value = Math.round(value * 2)
-    }
+
+  UpgradeCheck();
+}
+
+function AddSilverMiner(){
+  setInterval(function () {
+    var Silver = parseInt(document.getElementById('silver').value, 10);
+    Silver++;
+    document.getElementById('silver').value = Silver;
+  }, 1000);
+}
+
+
+
+
+
+function GoldMine(){
+  var Gold = document.getElementById('gold').value
+  Gold++;
+  document.getElementById('gold').value = Gold;
+  UpgradeCheck();
+}
+
+function BigMineGold(){
+  var Gold = document.getElementById('gold').value;
+  var Random = Math.random() * (2 - 1) + 1;
+  Gold = Math.round(Gold * Random);
+  document.getElementById('gold').value = Gold
+
+  UpgradeCheck();
+}
+
+function BuyAutoMineGold(){
+  var Gold = document.getElementById('gold').value;
+  if (Gold >= 10000){
+    AddGoldMiner();
+    var MinerCount = document.getElementById('autoMinerCountGold').value;
+    MinerCount++;
+    document.getElementById('autoMinerCountGold').value = MinerCount;
+    Gold = Gold - 10000;
+    document.getElementById('gold').value = Gold;
   }
-  CheckBalance();
+
+  UpgradeCheck();
+}
+
+function AddGoldMiner(){
+  setInterval(function () {
+    var Gold = parseInt(document.getElementById('gold').value, 10);
+    Gold++;
+    document.getElementById('gold').value = Gold;
+  }, 1000);
 }
