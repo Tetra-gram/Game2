@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang='en'>
-    <meta charset='UTF-8'>  
-
+<html>
     <body>
-        <canvas id = "grid" width = "400" height = "400" style = "border:1px solid #d3d3d3;"> 
-        Error.</canvas>
-        
-        <script>
+    <canvas id="grid" width="400" height="400" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+    <script>
         var c = document.getElementById("grid");
-        var line = c.getContext("2d");
-        line.moveto(0,0);
-        line.lineto(200,200);
-        line.stroke();
-        </script>  
+        var ctx = c.getContext("2d");
+        ctx.moveTo(0,0);	
+        ctx.lineTo(200,200);
+        ctx.stroke();
+    </script>
     </body>
 </html>
+
